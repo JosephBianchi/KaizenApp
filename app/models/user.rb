@@ -13,7 +13,12 @@ class User < ApplicationRecord
   validates :role, presence: true, length: { maximum: 200 }
   validates :password, presence: true, length: { minimum: 6 }
 
-
+  # Returns the hash digest of the given string. ONLY PAY ATTENTION TO IF WANT TO USE FIXTURES FOR USER INSTEAD OF FACTORIES
+  def User.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   has_secure_password
 
