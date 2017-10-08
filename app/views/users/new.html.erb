@@ -1,6 +1,39 @@
 <% provide(:title, "Signup") %>
+<h1>Sign up</h1>
 
+<div class="">
+  <div class="">
+    <%= form_for(@user, url: signup_path) do |f| %>
+      <%= render 'shared/error_messages' %>
 
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
-<p>This will be a signup page for new users.</p>
+      <%= f.label :first_name %>
+      <%= f.text_field :first_name %>
+
+      <%= f.label :last_name %>
+      <%= f.text_field :last_name %>
+
+      <%= f.label :age %>
+      <%= f.number_field :age %>
+
+      <%= f.label :sex %>
+      <%= f.text_field :sex %>
+
+      <%= f.label :email %>
+      <%= f.email_field :email %>
+
+      <%= f.label :phone %>
+      <%= f.telephone_field :phone %>
+
+      <%= f.label :role %>
+      <%= f.text_field :role %>
+
+      <%= f.label :password %>
+      <%= f.password_field :password %>
+
+      <%= f.label :password_confirmation, "Confirmation" %>
+      <%= f.password_field :password_confirmation %>
+
+      <%= f.submit "Create my account", class: "" %>
+    <% end %>
+  </div>
+</div>
