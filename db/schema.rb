@@ -10,12 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009211807) do
+ActiveRecord::Schema.define(version: 20171009213415) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer "mentor_id"
+    t.integer "student_id"
+    t.date "date"
+    t.time "time"
+    t.string "location"
+    t.integer "sub_category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["mentor_id", "student_id"], name: "index_relationships_on_mentor_id_and_student_id", unique: true
+    t.index ["mentor_id"], name: "index_relationships_on_mentor_id"
+    t.index ["student_id"], name: "index_relationships_on_student_id"
   end
 
   create_table "sub_categories", force: :cascade do |t|
